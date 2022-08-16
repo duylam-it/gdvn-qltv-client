@@ -43,9 +43,9 @@ import { SettingsProvider } from './contexts/SettingsContext'
 // Check our docs
 // https://docs-minimals.vercel.app/authentication/ts-version
 
-// import { AuthProvider } from './contexts/JWTContext'
+import { AuthProvider } from './contexts/JWTContext'
 // import { AuthProvider } from './contexts/Auth0Context';
-import { AuthProvider } from './contexts/FirebaseContext'
+// import { AuthProvider } from './contexts/FirebaseContext'
 // import { AuthProvider } from './contexts/AwsCognitoContext';
 
 //

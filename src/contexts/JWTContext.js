@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { createContext, useEffect, useReducer } from 'react'
 // utils
-import axios from '../utils/axios_old'
+import axios from '../utils/axios'
 import { isValidToken, setSession } from '../utils/jwt'
 
 // ----------------------------------------------------------------------
@@ -75,8 +75,17 @@ function AuthProvider({ children }) {
         if (accessToken && isValidToken(accessToken)) {
           setSession(accessToken)
 
-          const response = await axios.get('/api/account/my-account')
-          const { user } = response.data
+          const response = await axios.post(
+            '/user/verify',
+            {},
+            {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }
+          )
+          const user = response
+          console.log(user)
 
           dispatch({
             type: 'INITIALIZE',
@@ -110,12 +119,13 @@ function AuthProvider({ children }) {
   }, [])
 
   const login = async (email, password) => {
-    const response = await axios.post('/api/account/login', {
+    const response = await axios.post('/user/signIn', {
       email,
       password,
     })
-    const { accessToken, user } = response.data
 
+    const { accessToken, user } = response.data.data
+    console.log(user)
     setSession(accessToken)
 
     dispatch({

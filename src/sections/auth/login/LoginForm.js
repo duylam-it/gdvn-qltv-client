@@ -64,13 +64,7 @@ export default function LoginForm() {
 
       let message =
         'Tìm thấy lỗi trong quá trình đăng nhập, vui lòng kiểm tra và thử lại'
-      if (error.message.includes('auth/wrong-password'))
-        message = 'Bạn đã nhập sai mật khẩu'
-      else if (error.message.includes('auth/too-many-requests'))
-        message =
-          'Quyền truy cập vào tài khoản này đã tạm thời bị vô hiệu hóa do nhiều lần đăng nhập không thành công. Bạn có thể khôi phục ngay lập tức bằng cách đặt lại mật khẩu của mình hoặc bạn có thể thử lại sau.'
-      else if (error.message.includes('auth/user-not-found'))
-        message = 'Không có tài khoản nào khớp với email này'
+      if (error === 'Unauthorized') message = 'Email hoặc mật khẩu không đúng'
       if (isMountedRef.current) {
         setError('afterSubmit', { ...error, message })
       }
