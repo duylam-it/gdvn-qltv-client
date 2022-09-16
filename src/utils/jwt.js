@@ -1,8 +1,8 @@
 import jwtDecode from 'jwt-decode'
 // routes
 import { PATH_AUTH } from '../routes/paths'
-//
-import axios from './axios_old'
+// axios
+import axios from './axios'
 
 // ----------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ const handleTokenExpired = (exp) => {
 
   expiredTimer = setTimeout(() => {
     // eslint-disable-next-line no-alert
-    alert('Token expired')
+    alert('Phiên đăng nhập đã hết hạn')
 
     localStorage.removeItem('accessToken')
 

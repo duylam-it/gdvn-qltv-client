@@ -21,7 +21,7 @@ import {
 import axios from 'src/utils/axios'
 // redux
 import { getBooks } from '../../redux/slices/book'
-import { useDispatch, useSelector } from '../../redux/store'
+import { dispatch, useSelector } from '../../redux/store'
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths'
 // hooks
@@ -82,7 +82,7 @@ export default function BookAll() {
 
   const { enqueueSnackbar } = useSnackbar()
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   const { books, isLoading } = useSelector((state) => state.book)
 
@@ -92,7 +92,7 @@ export default function BookAll() {
 
   useEffect(() => {
     dispatch(getBooks())
-  }, [dispatch])
+  }, [])
 
   useEffect(() => {
     if (books.length) {

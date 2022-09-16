@@ -125,30 +125,11 @@ function AuthProvider({ children }) {
     })
 
     const { accessToken, user } = response.data.data
-    console.log(user)
+
     setSession(accessToken)
 
     dispatch({
       type: 'LOGIN',
-      payload: {
-        user,
-      },
-    })
-  }
-
-  const register = async (email, password, firstName, lastName) => {
-    const response = await axios.post('/api/account/register', {
-      email,
-      password,
-      firstName,
-      lastName,
-    })
-    const { accessToken, user } = response.data
-
-    localStorage.setItem('accessToken', accessToken)
-
-    dispatch({
-      type: 'REGISTER',
       payload: {
         user,
       },
@@ -167,7 +148,6 @@ function AuthProvider({ children }) {
         method: 'jwt',
         login,
         logout,
-        register,
       }}>
       {children}
     </AuthContext.Provider>
