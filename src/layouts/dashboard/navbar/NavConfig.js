@@ -72,8 +72,8 @@ const navConfig = [
         path: PATH_DASHBOARD.borrow.root,
         icon: ICONS.user,
         children: [
-          { title: 'Tất cả', path: PATH_DASHBOARD.borrow.all },
-          { title: 'Tạo mới', path: PATH_DASHBOARD.borrow.new },
+          { title: 'Tất cả', path: PATH_DASHBOARD.userCustom.all },
+          { title: 'Tạo mới', path: PATH_DASHBOARD.userCustom.new },
         ],
       },
 

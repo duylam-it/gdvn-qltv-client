@@ -1,17 +1,22 @@
-import { capitalCase } from 'change-case';
+import { capitalCase } from 'change-case'
 // @mui
-import { Container, Tab, Box, Tabs } from '@mui/material';
+import { Container, Tab, Box, Tabs } from '@mui/material'
 // routes
-import { PATH_DASHBOARD } from '../../routes/paths';
+import { PATH_DASHBOARD } from '../../routes/paths'
 // hooks
-import useTabs from '../../hooks/useTabs';
-import useSettings from '../../hooks/useSettings';
+import useTabs from '../../hooks/useTabs'
+import useSettings from '../../hooks/useSettings'
 // _mock_
-import { _userPayment, _userAddressBook, _userInvoices, _userAbout } from '../../_mock';
+import {
+  _userPayment,
+  _userAddressBook,
+  _userInvoices,
+  _userAbout,
+} from '../../_mock'
 // components
-import Page from '../../components/Page';
-import Iconify from '../../components/Iconify';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../components/Page'
+import Iconify from '../../components/Iconify'
+import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs'
 // sections
 import {
   AccountGeneral,
@@ -19,14 +24,14 @@ import {
   AccountSocialLinks,
   AccountNotifications,
   AccountChangePassword,
-} from '../../sections/@dashboard/user/account';
+} from '../../sections/@dashboard/user_old/account'
 
 // ----------------------------------------------------------------------
 
 export default function UserAccount() {
-  const { themeStretch } = useSettings();
+  const { themeStretch } = useSettings()
 
-  const { currentTab, onChangeTab } = useTabs('general');
+  const { currentTab, onChangeTab } = useTabs('general')
 
   const ACCOUNT_TABS = [
     {
@@ -37,7 +42,13 @@ export default function UserAccount() {
     {
       value: 'billing',
       icon: <Iconify icon={'ic:round-receipt'} width={20} height={20} />,
-      component: <AccountBilling cards={_userPayment} addressBook={_userAddressBook} invoices={_userInvoices} />,
+      component: (
+        <AccountBilling
+          cards={_userPayment}
+          addressBook={_userAddressBook}
+          invoices={_userInvoices}
+        />
+      ),
     },
     {
       value: 'notifications',
@@ -54,7 +65,7 @@ export default function UserAccount() {
       icon: <Iconify icon={'ic:round-vpn-key'} width={20} height={20} />,
       component: <AccountChangePassword />,
     },
-  ];
+  ]
 
   return (
     <Page title="User: Account Settings">
@@ -73,20 +84,25 @@ export default function UserAccount() {
           variant="scrollable"
           scrollButtons="auto"
           value={currentTab}
-          onChange={onChangeTab}
-        >
+          onChange={onChangeTab}>
           {ACCOUNT_TABS.map((tab) => (
-            <Tab disableRipple key={tab.value} label={capitalCase(tab.value)} icon={tab.icon} value={tab.value} />
+            <Tab
+              disableRipple
+              key={tab.value}
+              label={capitalCase(tab.value)}
+              icon={tab.icon}
+              value={tab.value}
+            />
           ))}
         </Tabs>
 
         <Box sx={{ mb: 5 }} />
 
         {ACCOUNT_TABS.map((tab) => {
-          const isMatched = tab.value === currentTab;
-          return isMatched && <Box key={tab.value}>{tab.component}</Box>;
+          const isMatched = tab.value === currentTab
+          return isMatched && <Box key={tab.value}>{tab.component}</Box>
         })}
       </Container>
     </Page>
-  );
+  )
 }

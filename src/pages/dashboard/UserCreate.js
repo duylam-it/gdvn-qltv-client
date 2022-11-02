@@ -1,31 +1,31 @@
-import { paramCase, capitalCase } from 'change-case';
-import { useParams, useLocation } from 'react-router-dom';
+import { paramCase, capitalCase } from 'change-case'
+import { useParams, useLocation } from 'react-router-dom'
 // @mui
-import { Container } from '@mui/material';
+import { Container } from '@mui/material'
 // routes
-import { PATH_DASHBOARD } from '../../routes/paths';
+import { PATH_DASHBOARD } from '../../routes/paths'
 // hooks
-import useSettings from '../../hooks/useSettings';
+import useSettings from '../../hooks/useSettings'
 // _mock_
-import { _userList } from '../../_mock';
+import { _userList } from '../../_mock'
 // components
-import Page from '../../components/Page';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../components/Page'
+import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs'
 // sections
-import UserNewEditForm from '../../sections/@dashboard/user/UserNewEditForm';
+import UserNewEditForm from '../../sections/@dashboard/user_old/UserNewEditForm'
 
 // ----------------------------------------------------------------------
 
 export default function UserCreate() {
-  const { themeStretch } = useSettings();
+  const { themeStretch } = useSettings()
 
-  const { pathname } = useLocation();
+  const { pathname } = useLocation()
 
-  const { name = '' } = useParams();
+  const { name = '' } = useParams()
 
-  const isEdit = pathname.includes('edit');
+  const isEdit = pathname.includes('edit')
 
-  const currentUser = _userList.find((user) => paramCase(user.name) === name);
+  const currentUser = _userList.find((user) => paramCase(user.name) === name)
 
   return (
     <Page title="User: Create a new user">
@@ -42,5 +42,5 @@ export default function UserCreate() {
         <UserNewEditForm isEdit={isEdit} currentUser={currentUser} />
       </Container>
     </Page>
-  );
+  )
 }

@@ -124,7 +124,17 @@ function AuthProvider({ children }) {
       password,
     })
 
-    const { accessToken, user } = response.data.data
+    const { accessToken } = response.data.data
+
+    const user = await axios.post(
+      '/user/verify',
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    )
 
     setSession(accessToken)
 

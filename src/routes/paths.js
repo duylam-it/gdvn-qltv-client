@@ -65,9 +65,6 @@ export const PATH_DASHBOARD = {
     edit: (name) => path(ROOTS_DASHBOARD, `/user/${name}/edit`),
     demoEdit: path(ROOTS_DASHBOARD, `/user/reece-chung/edit`),
   },
-  userCustom: {
-    root: path(ROOTS_DASHBOARD, '/user'),
-  },
   eCommerce: {
     root: path(ROOTS_DASHBOARD, '/e-commerce'),
     shop: path(ROOTS_DASHBOARD, '/e-commerce/shop'),
@@ -109,6 +106,11 @@ export const PATH_DASHBOARD = {
       ROOTS_DASHBOARD,
       '/blog/post/apply-these-7-secret-techniques-to-improve-event'
     ),
+  },
+  userCustom: {
+    root: path(ROOTS_DASHBOARD, '/user'),
+    all: path(ROOTS_DASHBOARD, '/user/all'),
+    new: path(ROOTS_DASHBOARD, '/user/new'),
   },
   book: {
     root: path(ROOTS_DASHBOARD, '/book'),
